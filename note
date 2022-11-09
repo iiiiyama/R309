@@ -9,13 +9,40 @@
             -> le serveur s'arrête
 
 
+    ex :
+             -> client1
+             <-
+      serveur
+              -> client2
+              <-
+
+##############################################################################
+
 2) asynchrone
 
    serveur et le client discutent sans attendre un  message de l'autre
 
 
+   ex :
+           <-> client1
+    serveur
+           <-> client2
+
+
+##############################################################################
 3) fabriquer un discord
 
     multi connections de client
 
     serveur redistribue les messages
+
+
+    ex:
+                    <-> client 1
+            serveur <-> client 2
+                    <-> client 3
+
+##############################################################################
+
+
+1) et 2) un client et un serveur à la fois
