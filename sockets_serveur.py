@@ -2,7 +2,9 @@ import socket, select
 
 
 server_socket = socket.socket()
-server_socket.bind(('localhost', 10000))
+host = socket.gethostname()
+port = 12121
+server_socket.bind((host, port))
 ######### écoute les connexions entrantes #########
 server_socket.listen(3)
 ####################################
@@ -16,7 +18,6 @@ while inputs :
         if client_socket is server_socket :
 
             conn, client_address = server_socket.accept()
-            connection.setblocking[0]
             inputs.append(conn)
 
 data = server_socket.recv(1024).decode()
