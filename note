@@ -1,0 +1,21 @@
+1) synchrone
+
+    serveur puisse communiquer avec un client l'un après l'autre
+
+    bye = client se déconnecte
+            -> le serveur attend un nouveau client
+
+    arrêt = client se déconnecte
+            -> le serveur s'arrête
+
+
+2) asynchrone
+
+   serveur et le client discutent sans attendre un  message de l'autre
+
+
+3) fabriquer un discord
+
+    multi connections de client
+
+    serveur redistribue les messages
