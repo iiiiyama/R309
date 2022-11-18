@@ -1,11 +1,24 @@
 import socket
 
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)             ######## crée le socket ##########
-host = socket.gethostname()
-port = 12121
-client_socket.connect((host, port))  ######## se connecte à l'host et au port #########
-client_socket.send('testest')               ######## envoie les données ########
-data = client_socket.recv(1024)    ######## réception des données #########
-client_socket.close()                       ######## ferme la communication #########
-print(data), 'Reçue'
+def client():
+
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host = socket.gethostname()
+    port = 1212
+    client_socket.connect((host, port))
+    data = client_socket.recv(1024)    ######## réception des données #########
+    message = input("->")
+
+    while message.lower().strip() != 'bye':
+        client_socket.send(message.encode())
+        data = client_socket.recv(1024).decode()
+        print('received from server: ' + data)
+        message = input("->")
+
+    client_socket.close()                       ######## ferme la communication #########
+    print(data), 'Reçue'
+
+
+if __name__ == '__main__':
+    client()
