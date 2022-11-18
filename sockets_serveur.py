@@ -1,21 +1,23 @@
 import socket
 
-def serveur():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = socket.gethostname()
-    port = 1212
-    server_socket.bind((host, port))
-    server_socket.listen(3)
-    conn_client, client_address = server_socket.accept()
 
+def serveur():
+    host = "127.0.0.1"
+    port = 5000
+    server_socket = socket.socket()
+    server_socket.bind((host, port))
+    server_socket.listen(1)
+    conn_client, client_address = server_socket.accept()
     while True:
         data = conn_client.recv(1024).decode()
-        if not data:
+        print(f"from connected user{host}:" + str(data))
+        if data == 'bye':
+            conn_client.send('bye'.encode())
+            conn_client.close()
+            server_socket.close()
             break
-        print (f"")
-    server_socket.send('OK')
-    conn_client.close()
-    server_socket.close()
+        data = input("->")
+        conn_client.send(data.encode())
 
 
 if __name__ == '__main__':
